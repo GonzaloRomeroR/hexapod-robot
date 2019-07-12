@@ -12,9 +12,10 @@ syms Izz1 Izz2 Izz3;
 syms g;
 syms m1 m2 m3;
 
+
 DH = [
 0 0 l1 pi/2 0
-0 0 l2 0 0
+0 0 l2 0 0  
 -pi/2 0 l3 0 0
 ];
 
@@ -26,10 +27,13 @@ fDegrees = 3;
 % J2 = [Ixx2, 0, 0, -(l2-lc2)*m2;0, Iyy2, 0, 0;0, 0, Izz2, 0; -(l2-lc2)*m2 0 0 m2];
 % J3 = [Ixx3, 0, 0, (l3-lc3)*m3;0, Iyy3, 0, 0;0, 0, Izz3, 0; (l3-lc3)*m3 0 0 m3];
 
-J1 = [Ixx1, 0, 0, -(l1-lc1)*m1; 0, Iyy1, 0, 0; 0, 0, Izz1, 0; -(l1-lc1)*m1 0 0 m1];
-J2 = [Ixx2, 0, 0, -(l2-lc2)*m2; 0, Iyy2, 0, 0; 0, 0, Izz2, 0; -(l2-lc2)*m2 0 0 m2];
-J3 = [Ixx3, 0, 0, (l3-lc3)*m3; 0, Iyy3, 0, 0; 0, 0, Izz3, 0; (l3-lc3)*m3 0 0 m3];
+% J1 = [Ixx1, 0, 0, -(l1-lc1)*m1; 0, Iyy1, 0, 0; 0, 0, Izz1, 0; -(l1-lc1)*m1 0 0 m1];
+% J2 = [Ixx2, 0, 0, -(l2-lc2)*m2; 0, Iyy2, 0, 0; 0, 0, Izz2, 0; -(l2-lc2)*m2 0 0 m2];
+% J3 = [Ixx3, 0, 0, (l3-lc3)*m3; 0, Iyy3, 0, 0; 0, 0, Izz3, 0; (l3-lc3)*m3 0 0 m3];
 
+J1 = [0, 0, 0, -(l1-lc1)*m1; 0, 0, 0, 0; 0, 0, 0, 0; -(l1-lc1)*m1 0 0 m1];
+J2 = [0, 0, 0, -(l2-lc2)*m2; 0, 0, 0, 0; 0, 0, 0, 0; -(l2-lc2)*m2 0 0 m2];
+J3 = [0, 0, 0, -(l3-lc3)*m3; 0, 0, 0, 0; 0, 0, 0, 0; -(l3-lc3)*m3 0 0 m3];
 
 J(:,:,1) = J1;
 J(:,:,2) = J2;
@@ -62,6 +66,7 @@ Qt = [
 Q(:,:,1) = Qr;
 Q(:,:,2) = Qr;
 Q(:,:,3) = Qr;
+
 q_dot = [qd1 qd2 qd3];
 
 TransfMatrix(:, :, 1) = [cos(q1), 0, sin(q1), l1*cos(q1); sin(q1), 0, -cos(q1), l1*sin(q1); 0, 1, 0, 0; 0, 0, 0, 1];
@@ -183,3 +188,4 @@ display(D)
 display(H)
 display(C)
 
+T = simplify(D * [qdd1; qdd2; qdd3] + H + C)

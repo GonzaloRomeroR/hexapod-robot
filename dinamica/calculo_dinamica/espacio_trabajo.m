@@ -6,18 +6,22 @@ close all
 % 0 0 10 0 0;
 % -pi/2 0 20 0 0];
 
-dh = [ 0 -10 0 -pi/2 0;
+dh = [ 0 0 10 pi/2 0;
 0 0 10 0 0;
 -pi/2 0 20 0 0];
+
 miLink = SerialLink(dh,'name','Hexapodo');
+
 %Rango angular de las articulaciones
 miLink.links(1).qlim=[ 0 pi];
 miLink.links(2).qlim=[ 0 pi];
 miLink.links(3).qlim=[ 0 pi];
 %offsets o Ceros de cada coordenada articular
-miLink.offset = [0 -pi/2 -140*pi/180];
+
+miLink.offset = [0 0 0];
 % Posición inicial (medido desde offset)
 q = [0 0 0];
+
 axisbox = [-50, 50, -50, 50, -50, 50];
 % plot modelo 3D:
 miLink.plot(q,'workspace',axisbox,'scale',1)

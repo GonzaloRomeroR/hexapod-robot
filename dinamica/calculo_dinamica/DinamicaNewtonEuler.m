@@ -22,13 +22,13 @@ DH = [
 ];
 
 % Inercias 
-I1 = [Ixx1, 0, 0; 0, Iyy1, 0; 0, 0, Izz1];
-I2 = [Ixx2, 0, 0; 0, Iyy2, 0; 0, 0, Izz2];
-I3 = [Ixx3, 0, 0; 0, Iyy3, 0; 0, 0, Izz3];
+% I1 = [Ixx1, 0, 0; 0, Iyy1, 0; 0, 0, Izz1];
+% I2 = [Ixx2, 0, 0; 0, Iyy2, 0; 0, 0, Izz2];
+% I3 = [Ixx3, 0, 0; 0, Iyy3, 0; 0, 0, Izz3];
 % 
-% I1 = [0, 0, 0;0, 0, 0;0, 0, 0];
-% I2 = [0, 0, 0;0, 0, 0;0, 0, 0];
-% I3 = [0, 0, 0;0, 0, 0;0, 0, 0];
+I1 = [0, 0, 0;0, 0, 0;0, 0, 0];
+I2 = [0, 0, 0;0, 0, 0;0, 0, 0];
+I3 = [0, 0, 0;0, 0, 0;0, 0, 0];
 
 % Matrices de rotacion
 RotMatrix(:, :, 1) = [cos(q1), 0, sin(q1); sin(q1), 0, -cos(q1); 0, 1, 0];
@@ -73,7 +73,7 @@ for i = 2:fDegrees+1
     % Angular velocity
     w(:, i) = InvRotMatrix(:, :, i-1)*(w(:, i-1) + z(:,1)*q_dot(i-1));
     % Angular acceleration
-    w_dot(:, i) = InvRotMatrix(:, :, i-1)*(w_dot(:, i-1) + z(:,1)*q_dot2(i-1)) + cross(w(:,i-1), z(:,1)*q_dot(i-1));
+    w_dot(:, i) = InvRotMatrix(:, :, i-1)*(w_dot(:, i-1) + z(:,1)*q_dot2(i-1) + cross(w(:,i-1), z(:,1)*q_dot(i-1)));
     % Linear acceleration
     v_dot(:, i) = cross(w_dot(:, i), p(:, i-1)) + cross(w(:, i),cross(w(:, i), p(:, i-1))) + InvRotMatrix(:, :, i-1) * v_dot(:, i-1);
     % Linear acceleration center of gravity
