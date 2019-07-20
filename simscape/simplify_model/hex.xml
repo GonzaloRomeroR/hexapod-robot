@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<SimscapeMultibodyImportXML version="2.0" xmlns="urn:mathworks:SimscapeMultibody:import" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Created by="" on="07/13/19||10:22:02" using="Simscape Multibody Link Version 5.0" from="SolidWorks 26.0.0"/>
+<ModelUnits mass="kilogram" length="millimeter"/>
+<DataUnits mass="kilogram" length="meter"/>
+<RootAssembly name="" uid="" version="132">
+<AssemblyFile name="" type="SolidWorks Assembly"/>
+<InstanceTree>
+<Instance name="pata3-1" uid="pata3-1" entityUid="pata3*:*Predeterminado">
+<Transform>
+<Rotation>0.7626160572036782 0.64657932220451098 0.01875978125329986 -0.64685141206858043 0.76229527240601014 0.022117151089837816 7.1004880550410015e-016 -0.02900168555450483 0.99957936264960856</Rotation>
+<Translation>-0.10040796127731438 -0.13139145748923128 0.19744157747028207</Translation>
+</Transform>
+</Instance>
+<Instance name="cama-1" uid="cama-1" grounded="true" entityUid="cama*:*Predeterminado">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0.0090089325209839477 0.0053707097721261629 0.14687163154393165</Translation>
+</Transform>
+</Instance>
+<Instance name="pata2-2" uid="pata2-2" entityUid="pata2*:*Predeterminado">
+<Transform>
+<Rotation>0.60158655700943198 -0.23771908573072656 -0.76261605720367898 0.70925031562678109 -0.28026280610918836 0.64685141206857932 -0.3675018424564005 -0.93002279315678649 -1.0174216154283613e-015</Rotation>
+<Translation>-0.084726865456353953 -0.1438229748089056 0.19787846057536662</Translation>
+</Transform>
+</Instance>
+<Instance name="pata1-1" uid="pata1-1" entityUid="pata1*:*Predeterminado">
+<Transform>
+<Rotation>-0.64685141206858021 0.76261605720367831 0 -0.76261605720367831 -0.64685141206858021 0 0 0 1</Rotation>
+<Translation>-0.025242173787358088 -0.042773522330233196 0.16687163154393164</Translation>
+</Transform>
+</Instance>
+</InstanceTree>
+<Constraints>
+<Coincident name="Coincidente1">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>cama-1</Uid>
+</InstancePath>
+<Position>0 0 0.024999999999999994</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>pata1-1</Uid>
+</InstancePath>
+<Position>0.010000000000000009 0.0074999999999999963 0.0050000000000000044</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Concentric name="Concéntrica1">
+<ConstraintGeometry geomType="circle">
+<InstancePath>
+<Uid>cama-1</Uid>
+</InstancePath>
+<Position>-0.035000000000000288 -0.06062177826491056 0.01999999999999999</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="circle">
+<InstancePath>
+<Uid>pata1-1</Uid>
+</InstancePath>
+<Position>0.010000000000000009 0.0074999999999999963 0.0050000000000000044</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Concentric name="Concéntrica3">
+<ConstraintGeometry geomType="circle">
+<InstancePath>
+<Uid>pata1-1</Uid>
+</InstancePath>
+<Position>0.038500000000000006 0.02 -0.0075000000000000067</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="circle">
+<InstancePath>
+<Uid>pata2-2</Uid>
+</InstancePath>
+<Position>0.085800000000000043 0.0075000000000000067 0.024999999999999991</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Coincident name="Coincidente8">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>pata1-1</Uid>
+</InstancePath>
+<Position>0.038500000000000006 0.02 -0.0075000000000000067</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>pata2-2</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Concentric name="Concéntrica4">
+<ConstraintGeometry geomType="circle">
+<InstancePath>
+<Uid>pata2-2</Uid>
+</InstancePath>
+<Position>0.010000000000000009 0.0074999999999999928 0</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="circle">
+<InstancePath>
+<Uid>pata3-1</Uid>
+</InstancePath>
+<Position>0.019999999999999997 0.0074999999999999789 -0.010000000000000037</Position>
+<Axis>1.0000000000000002 0 0</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Coincident name="Coincidente9">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>pata2-2</Uid>
+</InstancePath>
+<Position>0.025000000000000022 0 0.005000000000000001</Position>
+<Axis>1.7060272103028075e-016 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>pata3-1</Uid>
+</InstancePath>
+<Position>0.015000000000000012 0 0</Position>
+<Axis>1.0000000000000002 0 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+</Constraints>
+</RootAssembly>
+<Assemblies>
+</Assemblies>
+<Parts>
+<Part name="cama" uid="cama*:*Predeterminado" version="146">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="cama.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.33889930750599889</Mass>
+<CenterOfMass>0 0 0.012500000000000001</CenterOfMass>
+<Inertia>0.00044064436708179109 0.00044064436708179098 0.00083585508665721345 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="cama_Predeterminado_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Diffuse r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Specular r="0.396078431372549" g="0.40980392156862744" b="0.46666666666666667" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+<Part name="pata1" uid="pata1*:*Predeterminado" version="129">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="pata1.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.012483296326794896</Mass>
+<CenterOfMass>0.024250000000000004 0.0074999999999999997 -0.007499999999999998</CenterOfMass>
+<Inertia>5.7938835206944676e-007 2.7575588259369799e-006 2.7575588259369799e-006 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="pata1_Predeterminado_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Diffuse r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Specular r="0.396078431372549" g="0.40980392156862744" b="0.46666666666666667" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+<Part name="pata2" uid="pata2*:*Predeterminado" version="165">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="pata2.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.022621349540849368</Mass>
+<CenterOfMass>0.047899999999999998 0.0075000000000000023 0.012500000000000001</CenterOfMass>
+<Inertia>1.8860145273496519e-006 1.0943277774912445e-005 9.9282667710053517e-006 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="pata2_Predeterminado_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Diffuse r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Specular r="0.396078431372549" g="0.40980392156862744" b="0.46666666666666667" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+<Part name="pata3" uid="pata3*:*Predeterminado" version="126">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="pata3.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.021008398163397432</Mass>
+<CenterOfMass>0.0074999999999999989 0.0074999999999999945 -0.052530234482927637</CenterOfMass>
+<Inertia>2.9232358965399012e-005 2.9459258289391266e-005 6.9181530103472264e-007 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="pata3_Predeterminado_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Diffuse r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Specular r="0.396078431372549" g="0.40980392156862744" b="0.46666666666666667" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+</Parts>
+</SimscapeMultibodyImportXML>
