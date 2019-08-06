@@ -10,7 +10,7 @@ syms lc1 lc2 lc3;
 syms Ixx1 Ixx2 Ixx3;
 syms Iyy1 Iyy2 Iyy3;
 syms Izz1 Izz2 Izz3;
-syms g;
+syms gx gy gz;
 syms m1 m2 m3;
 
 % Parametros a utilizar
@@ -22,13 +22,13 @@ DH = [
 ];
 
 % Inercias 
-% I1 = [Ixx1, 0, 0; 0, Iyy1, 0; 0, 0, Izz1];
-% I2 = [Ixx2, 0, 0; 0, Iyy2, 0; 0, 0, Izz2];
-% I3 = [Ixx3, 0, 0; 0, Iyy3, 0; 0, 0, Izz3];
+I1 = [Ixx1, 0, 0; 0, Iyy1, 0; 0, 0, Izz1];
+I2 = [Ixx2, 0, 0; 0, Iyy2, 0; 0, 0, Izz2];
+I3 = [Ixx3, 0, 0; 0, Iyy3, 0; 0, 0, Izz3];
 % 
-I1 = [0, 0, 0;0, 0, 0;0, 0, 0];
-I2 = [0, 0, 0;0, 0, 0;0, 0, 0];
-I3 = [0, 0, 0;0, 0, 0;0, 0, 0];
+% I1 = [0, 0, 0;0, 0, 0;0, 0, 0];
+% I2 = [0, 0, 0;0, 0, 0;0, 0, 0];
+% I3 = [0, 0, 0;0, 0, 0;0, 0, 0];
 
 % Matrices de rotacion
 RotMatrix(:, :, 1) = [cos(q1), 0, sin(q1); sin(q1), 0, -cos(q1); 0, 1, 0];
@@ -44,7 +44,7 @@ end
 w(:, 1) = sym ([0; 0; 0]);
 w_dot(:, 1) = sym([0; 0; 0]);
 v(:, 1) = sym([0; 0; 0]);
-v_dot(:, 1) = sym([0; 0; g]);
+v_dot(:, 1) = sym([gx; gy; gz]);
 z(:, 1) = [0; 0; 1];
 
 f(:, fDegrees+1) = sym([0; 0; 0]);
@@ -71,13 +71,13 @@ I(:,:,3) = I3;
 
 for i = 2:fDegrees+1
     % Angular velocity
-    w(:, i) = InvRotMatrix(:, :, i-1)*(w(:, i-1) + z(:,1)*q_dot(i-1));
+    w(:, i) = InvRotMatrix(:, :, i-1)*(w(:, i-1) + z(:,1)*q_dot(i-1))
     % Angular acceleration
-    w_dot(:, i) = InvRotMatrix(:, :, i-1)*(w_dot(:, i-1) + z(:,1)*q_dot2(i-1) + cross(w(:,i-1), z(:,1)*q_dot(i-1)));
+    w_dot(:, i) = InvRotMatrix(:, :, i-1)*(w_dot(:, i-1) + z(:,1)*q_dot2(i-1) + cross(w(:,i-1), z(:,1)*q_dot(i-1)))
     % Linear acceleration
-    v_dot(:, i) = cross(w_dot(:, i), p(:, i-1)) + cross(w(:, i),cross(w(:, i), p(:, i-1))) + InvRotMatrix(:, :, i-1) * v_dot(:, i-1);
+    v_dot(:, i) = cross(w_dot(:, i), p(:, i-1)) + cross(w(:, i),cross(w(:, i), p(:, i-1))) + InvRotMatrix(:, :, i-1) * v_dot(:, i-1)
     % Linear acceleration center of gravity
-    a(:, i) = cross(w_dot(:, i), s(:, i-1)) + cross(w(:, i),cross(w(:, i), s(:, i-1))) + v_dot(:, i);
+    a(:, i) = cross(w_dot(:, i), s(:, i-1)) + cross(w(:, i),cross(w(:, i), s(:, i-1))) + v_dot(:, i)
     
 %     Translation
 %     w(:, i) = InvRotMatrix(:, :, i-1)*w(:, i-1);
@@ -93,10 +93,11 @@ end
 
 for i = fDegrees: -1 :1
     % Force
-    f(:, i) = RotMatrix(:, :, i+1) * f(:, i+1) + m(i) * a(:, i+1);
+    f(:, i) = RotMatrix(:, :, i+1) * f(:, i+1) + m(i) * a(:, i+1)
     % Link torque
     n(:, i) = RotMatrix(:, :, i+1)*(n(:, i + 1) + cross(InvRotMatrix(:, :, i+1)*p(:, i), f(:, i+1))) ...
-    + cross(p(:, i) + s(:, i), m(i)*a(:, i+1)) + I(:, :, i) * w_dot(:, i+1) + cross(w(:, i+1), I(:, :, i)*w(:, i+1)); 
+    + cross(p(:, i) + s(:, i), m(i)*a(:, i+1)) + I(:, :, i) * w_dot(:, i+1) + cross(w(:, i+1), I(:, :, i)*w(:, i+1));
+    simplify(n)
     % Joint torque
     T(:, i) = n(:, i).'* InvRotMatrix(:, :, i) * z(:, 1);
     simplify(T(:, i))

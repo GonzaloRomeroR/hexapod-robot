@@ -89,6 +89,7 @@ L(3).Jm = 0;
 grav = [gx gy gz];
 fext =[Fx Fy Fz Mx My Mz];
 fext =[Fx Fy Fz 0 0 0];
+%fext =[0 0 0 0 0 0]
 
 
 R = SerialLink(L, 'name', 'leg');
